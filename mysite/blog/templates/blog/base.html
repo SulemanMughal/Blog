@@ -1,4 +1,4 @@
-{% load static %}
+{% load static blog_tags %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -19,11 +19,40 @@
 
     {% include 'notification.html' %}
 
-    {% block content %}
+    
         
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-8">
+                {% block content %}
+                {% endblock content %}
+            </div>
+            <div class="col-12 col-lg-4">
+                <div class="card bg-light my-5">
+                    <div class="card-body">
+                        <h3 class="mb-3"> 
+                            My Blogs
+                        </h3>
+                        <p>This is my blog. I've written {% total_posts %} posts so far.</p>
+                        <h3>Latest posts</h3>
+                        {% show_latest_posts 3 %}
+                        <h3>Most commented posts</h3>
+{% get_most_commented_posts as most_commented_posts %}
+<ul>
+{% for post in most_commented_posts %}
+<li>
+<a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+</li>
+{% endfor %}
+</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
 
+    </div>
 
-    {% endblock content %}
+    
 
     {% block footer %}
     {% endblock footer %}

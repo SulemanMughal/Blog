@@ -16,4 +16,3 @@ The purpose of this project is to give you an overview of how the framework work
 - Custom TemplateTags and Filters
 - Sitemaps
 - Post Feed
-- 
